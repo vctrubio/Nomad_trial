@@ -45,4 +45,46 @@ miguel.save!
 nicolas.save!
 
 
-puts "completed..."
+puts "completed the teachers"
+
+puts "now doing lessons"
+
+level1 = Lesson.new(
+    description: "Beginner Level 1- learn the very basics of kitesurfing",
+    hours: "Total 3 hours",
+    price: "275$"
+)
+
+level2 = Lesson.new(
+    description: "Indemidate Level 2- Already know how to kite and want to improve? This is for you",
+    hours: "Total 5 hours",
+    price: "475$"
+)
+
+level3 = Lesson.new(
+    description: "Advanced Rider Level 3- Progress into the unknown",
+    hours: "Total 3 hours",
+    price: "300$"
+)
+
+jetski = Lesson.new(
+    description: "Jetski Assisted- Full time in the water!",
+    hours: "Total 2 hours",
+    price: "250$"
+)
+
+zerotohero = Lesson.new(
+    description: "Complete Course- Toes deep into kitesurfing!",
+    hours: "Total 10 hours",
+    price: "900$"
+)
+
+level1.save!
+level2.save!
+level3.save!
+jetski.save!
+zerotohero.save!
+
+
+
+puts "saved lesson seeds"
