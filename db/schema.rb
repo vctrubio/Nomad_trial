@@ -10,10 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_161734) do
+ActiveRecord::Schema.define(version: 2019_04_06_195616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "teacher_id"
+    t.bigint "user_id"
+    t.datetime "start"
+    t.string "equipment_used"
+    t.boolean "teacher_confirmation", default: false
+    t.boolean "payment", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "location"
+    t.index ["teacher_id"], name: "index_appointments_on_teacher_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+# lesson has appointment_id but appointment does not hold lesson_id
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "description"
+    t.string "hours"
+    t.string "price"
+    t.bigint "appointment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_lessons_on_appointment_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "kite_saftey"
+    t.string "kite_level"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "phone_number_mxn"
+    t.date "contract_start"
+    t.date "contract_end"
+    t.string "languages"
+    t.string "total_hours_integer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +73,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_161734) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "appointments", "teachers"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "lessons", "appointments"
 end

@@ -1,0 +1,19 @@
+<h1>Appointments#create</h1>
+<p>Find me in app/views/appointments/create.html.erb</p>
+
+
+<%= simple_form_for @appointment do |f| %>
+  <%= f.input :start, label: 'When do you wish to start' %>
+  <%= f.input :duration, label: 'When do you wish to start'  %>
+  <%= f.inout :payment, placeholder: "Pay upfront?" %>
+  <%= f.button :submit %>
+<% end %>
+
+
+<p>The student must provide a start date, earliest possible start, how many hours he wishes</p>
+<p>student may choose corespondent teacher</p>
+<p>student must specify when he leaves, last possible date + current kite boarding level</p>
+<p>are you looking foward to jetski assisted (yes no boolean)</p>
+
+
+<h2>then,</h2>

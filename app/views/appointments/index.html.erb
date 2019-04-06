@@ -1,0 +1,14 @@
+<h1>Appointments#index</h1>
+<p>All classes will be shown here</p>
+
+
+<% @appointment.each do |a| %>
+<%= a %>
+<% end %>
+
+
+
+
+<p>-----------------------------------</p>
+<p>Here links to Add, delete, or edit</p>
+<%= link_to "Book a class now", new_appointment_path %>
